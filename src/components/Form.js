@@ -15,17 +15,19 @@ export default function Form() {
         }));
     };
 
+    const [msg, setMsg] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             // Use Axios for the HTTP request
-            const response = await axios.post('http://localhost:3001/api/subscribe', {
+            const response = await axios.post('https://sellerkin-assignment-backend.vercel.app/api/subscribe', {
                 name : formData.name,
                 email: formData.email,
             });
 
             // Check response status and handle accordingly
             if (response.status === 200) {
+                setMsg(true);
                 console.log('Subscription successful');
             } else {
                 console.error('Subscription failed');
@@ -37,6 +39,7 @@ export default function Form() {
 
     return {
         formData,
+        msg,
         handleChange,
         handleSubmit,
     };
