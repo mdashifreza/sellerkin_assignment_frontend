@@ -1,9 +1,7 @@
-import React from 'react';
 import Form from './Form';
 
-export default function EmailFeatures() {
-    const { formData, handleChange, handleSubmit } = Form();
-
+function EmailFeatures() {
+    const { formData, msg, handleChange, handleSubmit } = Form();
     return (
         <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow">
             <form onSubmit={handleSubmit}>
@@ -45,7 +43,9 @@ export default function EmailFeatures() {
                 >
                     Submit
                 </button>
+                <p className='mt-5'>{msg ? (<span className='font-semibold'>Email sent successfully from: <span className='text-teal-500'>ashifmd9@gmail.com</span></span>) : ("")}</p>
             </form>
         </div>
     );
 };
+export default EmailFeatures;
